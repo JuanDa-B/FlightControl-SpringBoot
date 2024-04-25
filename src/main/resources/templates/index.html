@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- 
+@Author: Juan David Beltran Piza
+@University: Universidad ECCI
+@Subject: Pruebas de Software 4ANS
+@Year: 2024-1
+ -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Documento</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #ced6e0;
+
+    }
+
+    .dark-container .card {
+      background-color: #1e3799;
+      color: #fff;
+    }
+
+    .dark-modal .modal-content {
+      background-color: #ced6e0;
+      color: #02052b;
+    }
+
+    .dark-modal .modal-header {
+      background-color: #0b2969;
+      color: #dee0e9;
+      font-weight: bolder;
+      text-align: center;
+      justify-content: center;
+    }
+
+
+
+    .dark-container .card-header {
+      background-color: #0b2969;
+      font-weight: bolder;
+      text-align: center;
+    }
+
+    .dark-container label {
+      text-align: left;
+    }
+
+    .dark-container {
+      text-align: center;
+    }
+
+    .dark-modal .modal-title {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    .dark-modal label{
+      font-weight: 600;
+    }
+
+    .dark-container input {
+      background-color: #ced6e0;
+      border-color: ced6e0;
+      border-color: #444;
+    }
+
+    .dark-container button, .dark-container button:disabled{
+      background-color: #061638;
+      border-color: #061638;
+    }
+
+    .dark-container button:disabled:hover {
+      background-color: #061638;
+      border-color: #061638;
+    }
+
+    .dark-container button:hover {
+      background-color: #29806d;
+      border-color: #29806d;
+    }
+
+    .dark-container input:focus {
+      background-color: #d2d8e0;
+      border-color: #555;
+    }
+
+
+    .dark-modal .btn-secondary {
+      background: #061638;
+      border-color: #061638;
+    }
+
+    .dark-modal .btn-secondary:hover {
+      background: #29806d;
+      border-color: #29806d;
+    }
+
+    .dark-modal input {
+      background-color: #eff3f7;
+      /* Color de fondo del input un poco más claro */
+      color: #061638;
+      /* Color del texto en el input */
+      border-color: #ced6e0;
+      /* Color del borde del input */
+    }
+
+    .dark-modal input:focus {
+      background-color: rgb(241, 235, 235);
+      /* Color de fondo del input al enfocarlo */
+      border-color: #555;
+      color: #061638;
+      /* Color del borde del input al enfocarlo */
+    }
+
+    .dark-modal .span {
+      color: #fff;
+    }
+
+    /* Estilos para centrar verticalmente */
+    .vertical-center {
+      height: 40vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container-fluid mt-5 dark-container">
+    <!-- Contenedor flexible para centrar verticalmente -->
+    <div class="row justify-content-center vertical-center">
+      <!-- Columna para la imagen -->
+      <div class="col-md-6">
+        <img src="/lib/images/logo.png" class="img-fluid mx-auto d-block" alt="Imagen">
+      </div>
+    </div>
+    <!-- Contenedor para el formulario -->
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            Consulta de Documento
+          </div>
+          <div class="card-body">
+            <form id="consultaForm">
+              <div class="form-group">
+                <input type="text" class="form-control" id="documento" placeholder="Ingrese su número de documento"
+                  required>
+                  <div class="form-control invalid-feedback">
+                    El documento debe tener 8 o 10 dígitos.
+                  </div>
+              </div>
+              
+              <button type="submit" class="btn btn-primary" disabled>Consultar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal de Error -->
+  <div class="modal fade dark-modal" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalLabel">Usuario No Registrado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          El pasajero no está registrado. ¿Desea registrarse?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+            data-target="#registroModal">Registrarse</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Registro -->
+  <div class="modal fade dark-modal" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registroModalLabel">Registrarse</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="registroForm">
+            <div class="form-group">
+              <label for="documentoRegistro">Número de Documento</label>
+              <input type="text" class="form-control" id="documentoRegistro"
+                placeholder="Ingrese su número de documento" required disabled>
+            </div>
+            <div class="form-group">
+              <label for="nombreRegistro">Nombre</label>
+              <input type="text" class="form-control" id="nombreRegistro" placeholder="Ingrese su nombre" required>
+            </div>
+            <div class="modal-footer">
+
+              <button type="submit" class="btn btn-primary">Registrarse</button>
+
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Registro Exitoso -->
+  <div class="modal fade dark-modal" id="registroExitosoModal" tabindex="-1" role="dialog"
+    aria-labelledby="registroExitosoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registroExitosoModalLabel">Registro Exitoso</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ¡Registro exitoso! Su información ha sido guardada correctamente.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+            >Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Error en Registro -->
+  <div class="modal fade dark-modal" id="registroErrorModal" tabindex="-1" role="dialog"
+    aria-labelledby="registroErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registroErrorModalLabel">Error en Registro</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Ocurrió un error al intentar registrar al pasajero. Por favor, inténtelo de nuevo.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Error Genérico -->
+  <div class="modal fade dark-modal" id="genericErrorModal" tabindex="-1" role="dialog"
+    aria-labelledby="genericErrorModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="genericErrorModalLabel">Error</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Ocurrió un error al consultar el número de documento. Por favor, inténtelo de nuevo.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de notificación -->
+  <div class="modal fade dark-modal" id="notificacionModal" tabindex="-1" role="dialog"
+    aria-labelledby="notificacionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <div class="spinner-border text-primary mb-3" role="status" id="consultaLoadingModal">
+            <span class="sr-only">Cargando...</span>
+          </div>
+          <h4 class="mb-3" id="consultaMessageModal">Consultando al usuario...</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="/lib/js/usuario.js"> </script>
+
+</body>
+
+</html>

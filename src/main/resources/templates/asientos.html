@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+@Author: Juan David Beltran Piza
+@University: Universidad ECCI
+@Subject: Pruebas de Software 4ANS
+@Year: 2024-1
+ -->
+
+
+<!-- 
+
+Plantilla de asientos tomada de : https://github.com/Akibsheikh48/movie-seat-booking
+
+-->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/css/style.css" />
+
+  <title>Seleccion de asiento - FlightControl</title>
+
+  <style>
+    .card {
+      background-color: #0b2969;
+    }
+
+    .container img {
+      margin-top: -30px;
+      width: 160px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-auto">
+        <img src="/lib/images/logo.png" class="img-fluid mx-auto d-block" alt="Imagen">
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Columna izquierda: Información del usuario -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><b>Información del pasajero</b></h5>
+            <div class="form-group">
+              <br>
+              <label for="passengerDocument">Documento del pasajero</label>
+              <input type="number" class="form-control" id="passengerDocument" placeholder="Documento del pasajero"
+                disabled>
+
+              <label for="passengerInfo">Nombre del pasajero</label>
+              <input type="text" class="form-control" id="passengerInfo" placeholder="Nombre del pasajero" disabled>
+
+              <label for="selectedSeat">Asiento Seleccionado</label>
+              <input type="text" class="form-control" id="selectedSeat" placeholder="" disabled>
+
+            </div>
+
+          </div>
+          <div class="card-footer">
+            <button id="reservar" class="btn btn-primary btn-block">Confirmar Reserva</button>
+          </div>
+        </div>
+      </div>
+      <!-- Columna derecha: Selección de asientos -->
+      <div class="col-md-6">
+        <ul class="showcase">
+          <li>
+            <div class="seat"></div>
+            <small>Disponible</small>
+          </li>
+          <li>
+            <div class="seat_bs"></div>
+            <small>Ejecutiva</small>
+          </li>
+          <li>
+            <div class="seat selected1"></div>
+            <small>Seleccionado</small>
+          </li>
+          <li>
+            <div class="seat sold"></div>
+            <small>Vendido</small>
+          </li>
+        </ul>
+        <!-- Aquí va el resto de tu código para la selección de asientos -->
+        <div class="container_business">
+
+          <div class="row">
+            <div class="seat_bs" value="1" data-seat-type="Ejecutiva" data-seat-location="Ventana">1A</div>
+            <div class="seat_bs" value="2" data-seat-type="Ejecutiva" data-seat-location="Pasillo">2A</div>
+            <div class="seat_bs" value="3" data-seat-type="Ejecutiva" data-seat-location="Pasillo">3A</div>
+            <div class="seat_bs" value="4" data-seat-type="Ejecutiva" data-seat-location="Ventana">4A</div>
+          </div>
+
+          <div class="row">
+            <div class="seat_bs" value="5" data-seat-type="Ejecutiva" data-seat-location="Ventana">1B</div>
+            <div class="seat_bs" value="6" data-seat-type="Ejecutiva" data-seat-location="Pasillo">2B</div>
+            <div class="seat_bs" value="7" data-seat-type="Ejecutiva" data-seat-location="Pasillo">3B</div>
+            <div class="seat_bs" value="8" data-seat-type="Ejecutiva" data-seat-location="Ventana">4B</div>
+          </div>
+        </div>
+
+        <div class="containerEco">
+
+          <div class="row">
+            <div class="seat" value="9" data-seat-type="Economica" data-seat-location="Ventana">1C</div>
+            <div class="seat" value="10" data-seat-type="Economica" data-seat-location="Medio">2C</div>
+            <div class="seat" value="11" data-seat-type="Economica" data-seat-location="Pasillo">3C</div>
+            <div class="seat" value="12" data-seat-type="Economica" data-seat-location="Pasillo">4C</div>
+            <div class="seat" value="13" data-seat-type="Economica" data-seat-location="Medio">5C</div>
+            <div class="seat" value="14" data-seat-type="Economica" data-seat-location="Ventana">6C</div>
+          </div>
+
+          <div class="row">
+            <div class="seat" value="15" data-seat-type="Economica" data-seat-location="Ventana">1D</div>
+            <div class="seat" value="16" data-seat-type="Economica" data-seat-location="Medio">2D</div>
+            <div class="seat" value="17" data-seat-type="Economica" data-seat-location="Pasillo">3D</div>
+            <div class="seat" value="18" data-seat-type="Economica" data-seat-location="Pasillo">4D</div>
+            <div class="seat" value="19" data-seat-type="Economica" data-seat-location="Medio">5D</div>
+            <div class="seat" value="20" data-seat-type="Economica" data-seat-location="Ventana">6D</div>
+          </div>
+
+          <div class="row">
+            <div class="seat" value="21" data-seat-type="Economica" data-seat-location="Ventana">1E</div>
+            <div class="seat" value="22" data-seat-type="Economica" data-seat-location="Medio">2E</div>
+            <div class="seat" value="23" data-seat-type="Economica" data-seat-location="Pasillo">3E</div>
+            <div class="seat" value="24" data-seat-type="Economica" data-seat-location="Pasillo">4E</div>
+            <div class="seat" value="25" data-seat-type="Economica" data-seat-location="Medio">5E</div>
+            <div class="seat" value="26" data-seat-type="Economica" data-seat-location="Ventana">6E</div>
+          </div>
+          <div class="row">
+            <div class="seat" value="27" data-seat-type="Economica" data-seat-location="Ventana">1F</div>
+            <div class="seat" value="28" data-seat-type="Economica" data-seat-location="Medio">2F</div>
+            <div class="seat" value="29" data-seat-type="Economica" data-seat-location="Pasillo">3F</div>
+            <div class="seat" value="30" data-seat-type="Economica" data-seat-location="Pasillo">4F</div>
+            <div class="seat" value="31" data-seat-type="Economica" data-seat-location="Medio">5F</div>
+            <div class="seat" value="32" data-seat-type="Economica" data-seat-location="Ventana">6F</div>
+
+          </div>
+          <div class="row">
+            <div class="seat" value="33" data-seat-type="Economica" data-seat-location="Ventana">1G</div>
+            <div class="seat" value="34" data-seat-type="Economica" data-seat-location="Medio">2G</div>
+            <div class="seat" value="35" data-seat-type="Economica" data-seat-location="Pasillo">3G</div>
+            <div class="seat" value="36" data-seat-type="Economica" data-seat-location="Pasillo">4G</div>
+            <div class="seat" value="37" data-seat-type="Economica" data-seat-location="Medio">5G</div>
+            <div class="seat" value="38" data-seat-type="Economica" data-seat-location="Ventana">6G</div>
+
+          </div>
+
+          <div class="row">
+            <div class="seat" value="39" data-seat-type="Economica" data-seat-location="Ventana">1H</div>
+            <div class="seat" value="40" data-seat-type="Economica" data-seat-location="Medio">2H</div>
+            <div class="seat" value="41" data-seat-type="Economica" data-seat-location="Pasillo">3H</div>
+            <div class="seat" value="42" data-seat-type="Economica" data-seat-location="Pasillo">4H</div>
+            <div class="seat" value="43" data-seat-type="Economica" data-seat-location="Medio">5H</div>
+            <div class="seat" value="44" data-seat-type="Economica" data-seat-location="Ventana">6H</div>
+
+          </div>
+
+          <div class="row">
+            <div class="seat" value="45" data-seat-type="Economica" data-seat-location="Ventana">1I</div>
+            <div class="seat" value="46" data-seat-type="Economica" data-seat-location="Medio">2I</div>
+            <div class="seat" value="47" data-seat-type="Economica" data-seat-location="Pasillo">3I</div>
+            <div class="seat" value="48" data-seat-type="Economica" data-seat-location="Pasillo">4I</div>
+            <div class="seat" value="49" data-seat-type="Economica" data-seat-location="Medio">5I</div>
+            <div class="seat" value="50" data-seat-type="Economica" data-seat-location="Ventana">6I</div>
+
+          </div>
+
+
+        </div>
+        <!-- Recuerda que en esta sección debes incluir tus contenedores .container_business y .container -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade dark-modal" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Resultado del pago</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="paymentResult"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-auto">
+        <button class="btn btn-primary btn-lg" onclick="menu()">Volver al Menu</button>
+      </div>
+      <div class="col-md-auto">
+        <button class="btn btn-danger btn-lg" onclick="salir()">Cerrar Sesion</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Modal de notificación -->
+  <div class="modal fade dark-modal" id="notificacionModal" tabindex="-1" role="dialog"
+    aria-labelledby="notificacionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          <div class="spinner-border text-primary mb-3" role="status" id="consultaLoadingModal">
+            <span class="sr-only">Cargando...</span>
+          </div>
+          <h4 class="mb-3" id="consultaMessageModal">Consultando al usuario...</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/lib/js/asientos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+
+</html>
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Seleccion de asiento - FlighControl</title>
+
+
+
+
+</head>
+
+<body>
+
+  <ul class="showcase">
+    <li>
+      <div class="seat"></div>
+      <small>Disponible</small>
+    </li>
+    <li>
+      <div class="seat_bs"></div>
+      <small>Ejecutiva</small>
+    </li>
+    <li>
+      <div class="seat selected"></div>
+      <small>Seleccionado</small>
+    </li>
+    <li>
+      <div class="seat sold"></div>
+      <small>Vendido</small>
+    </li>
+  </ul>
+  <div class="container_business">
+
+    <div class="row">
+      <div class="seat_bs" value="1A" data-seat-type="Ejecutiva" data-seat-location="Ventana">1A</div>
+      <div class="seat_bs" value="2A" data-seat-type="Ejecutiva" data-seat-location="Pasillo">2A</div>
+      <div class="seat_bs" value="3A" data-seat-type="Ejecutiva" data-seat-location="Pasillo">3A</div>
+      <div class="seat_bs" value="4A" data-seat-type="Ejecutiva" data-seat-location="Ventana">4A</div>
+    </div>
+
+    <div class="row">
+      <div class="seat_bs" value="1B" data-seat-type="Ejecutiva" data-seat-location="Ventana">1B</div>
+      <div class="seat_bs" value="2B" data-seat-type="Ejecutiva" data-seat-location="Pasillo">2B</div>
+      <div class="seat_bs" value="3B" data-seat-type="Ejecutiva" data-seat-location="Pasillo">3B</div>
+      <div class="seat_bs" value="4B" data-seat-type="Ejecutiva" data-seat-location="Ventana">4B</div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="seat" value="1C" data-seat-type="Economica" data-seat-location="Ventana">1C</div>
+      <div class="seat" value="2C" data-seat-type="Economica">2C</div>
+      <div class="seat" value="3C" data-seat-type="Economica">3C</div>
+      <div class="seat" value="4C" data-seat-type="Economica">4C</div>
+      <div class="seat" value="5C" data-seat-type="Economica">5C</div>
+      <div class="seat" value="6C" data-seat-type="Economica" data-seat-location="Ventana">6C</div>
+    </div>
+
+    <div class="row">
+      <div class="seat" value="1D" data-seat-type="Economica">1D</div>
+      <div class="seat" value="2D" data-seat-type="Economica">2D</div>
+      <div class="seat" value="3D" data-seat-type="Economica">3D</div>
+      <div class="seat" value="4D" data-seat-type="Economica">4D</div>
+      <div class="seat" value="5D" data-seat-type="Economica">5D</div>
+      <div class="seat" value="6D" data-seat-type="Economica">6D</div>
+    </div>
+
+    <div class="row">
+      <div class="seat" value="1E" data-seat-type="Economica">1E</div>
+      <div class="seat" value="2E" data-seat-type="Economica">2E</div>
+      <div class="seat" value="3E" data-seat-type="Economica">3E</div>
+      <div class="seat" value="4E" data-seat-type="Economica">4E</div>
+      <div class="seat" value="5E" data-seat-type="Economica">5E</div>
+      <div class="seat" value="6E" data-seat-type="Economica">6E</div>
+    </div>
+    <div class="row">
+      <div class="seat" value="1F" data-seat-type="Economica">1F</div>
+      <div class="seat" value="2F" data-seat-type="Economica">2F</div>
+      <div class="seat" value="3F" data-seat-type="Economica">3F</div>
+      <div class="seat" value="4F" data-seat-type="Economica">4F</div>
+      <div class="seat" value="5F" data-seat-type="Economica">5F</div>
+      <div class="seat" value="6F" data-seat-type="Economica">6F</div>
+
+    </div>
+    <div class="row">
+      <div class="seat" value="1G" data-seat-type="Economica">1G</div>
+      <div class="seat" value="2G" data-seat-type="Economica">2G</div>
+      <div class="seat" value="3G" data-seat-type="Economica">3G</div>
+      <div class="seat" value="4G" data-seat-type="Economica">4G</div>
+      <div class="seat" value="5G" data-seat-type="Economica">5G</div>
+      <div class="seat" value="6G" data-seat-type="Economica">6G</div>
+
+    </div>
+
+    <div class="row">
+      <div class="seat" value="1H" data-seat-type="Economica">1H</div>
+      <div class="seat" value="2H" data-seat-type="Economica">2H</div>
+      <div class="seat" value="3H" data-seat-type="Economica">3H</div>
+      <div class="seat" value="4H" data-seat-type="Economica">4H</div>
+      <div class="seat" value="5H" data-seat-type="Economica">5H</div>
+      <div class="seat" value="6H" data-seat-type="Economica">6H</div>
+
+    </div>
+
+    <div class="row">
+      <div class="seat" value="1I" data-seat-type="Economica">1I</div>
+      <div class="seat" value="2I" data-seat-type="Economica">2I</div>
+      <div class="seat" value="3I" data-seat-type="Economica">3I</div>
+      <div class="seat" value="4I" data-seat-type="Economica">4I</div>
+      <div class="seat" value="5I" data-seat-type="Economica">5I</div>
+      <div class="seat" value="6I" data-seat-type="Economica">6I</div>
+
+    </div>
+
+    <div class="row">
+      <div class="seat" value="1J" data-seat-type="Economica">1J</div>
+      <div class="seat" value="2J" data-seat-type="Economica">2J</div>
+      <div class="seat" value="3J" data-seat-type="Economica">3J</div>
+      <div class="seat" value="4J" data-seat-type="Economica">4J</div>
+      <div class="seat" value="5J" data-seat-type="Economica">5J</div>
+      <div class="seat" value="6J" data-seat-type="Economica">6J</div>
+
+    </div>
+
+    <div class="row">
+      <div class="seat" value="1K" data-seat-type="Economica">1K</div>
+      <div class="seat" value="2K" data-seat-type="Economica">2K</div>
+      <div class="seat" value="3K" data-seat-type="Economica">3K</div>
+      <div class="seat" value="4K" data-seat-type="Economica">4K</div>
+      <div class="seat" value="5K" data-seat-type="Economica">5K</div>
+      <div class="seat" value="6K" data-seat-type="Economica">6K</div>
+
+    </div>
+  </div>
+
+
+  <script src="js/asientos.js"></script>
+</body>
+
+</html> -->

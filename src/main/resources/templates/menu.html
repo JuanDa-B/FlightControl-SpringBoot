@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<!-- 
+@Author: Juan David Beltran Piza
+@University: Universidad ECCI
+@Subject: Pruebas de Software 4ANS
+@Year: 2024-1
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            height: 100%;
+            background-color: #ced6e0;
+
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container img {
+            margin-bottom: 20px;
+        }
+
+        .btn-lg {
+            background-color: #2980b9;
+            border-color: #2980b9;
+            padding: 20px 40px;
+            height: 120px;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .btn-lg:hover {
+            background-color: #2850a7;
+            border-color: #2850a7;
+        }
+
+
+
+        .btn-lg-rv {
+            background-color: #0b2969;
+            border-color: #0b2969;
+            padding: 20px 40px;
+            height: 120px;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .dark-modal .btn-secondary {
+      background: #061638;
+      border-color: #061638;
+    }
+
+    .dark-modal .btn-secondary:hover {
+      background: #29806d;
+      border-color: #29806d;
+    }
+
+    .dark-modal input {
+      background-color: #eff3f7;
+      color: #061638;
+      border-color: #ced6e0;
+    }
+
+    .dark-modal input:focus {
+      background-color: rgb(241, 235, 235);
+      border-color: #555;
+      color: #061638;
+    }
+
+    .dark-modal .span {
+      color: #fff;
+    }
+    .dark-modal .modal-content {
+      background-color: #ced6e0;
+      color: #02052b;
+    }
+
+    .dark-modal .modal-header {
+      background-color: #0b2969;
+      color: #dee0e9;
+      font-weight: bolder;
+      text-align: center;
+      justify-content: center;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <img src="/lib/images/logo.png" class="img-fluid mx-auto d-block" alt="Imagen">
+        <h1 class="mb-4">Bienvenido, <span id="nombre"></span></h1>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-primary btn-lg-rv" onclick="verMisReservas()">Ver mis reservas</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-success btn-lg" onclick="realizarReserva()">Realizar una reserva</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de notificación -->
+    <div class="modal fade dark-modal" id="notificacionModal" tabindex="-1" role="dialog"
+        aria-labelledby="notificacionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary mb-3" role="status" id="consultaLoadingModal">
+                    </div>
+                    <h4 class="mb-3" id="consultaMessageModal">Consultando al usuario...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/lib/js/menu.js"> </script>
+
+</body>
+
+</html>

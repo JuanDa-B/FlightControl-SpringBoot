@@ -1,0 +1,12 @@
+,------.,--.,--.       ,--.       ,--.   ,-----.                 ,--.                ,--.
+|  .---'|  |`--' ,---. |  ,---. ,-'  '-.'  .--./ ,---. ,--,--, ,-'  '-.,--.--. ,---. |  |
+|  `--, |  |,--.| .-. ||  .-.  |'-.  .-'|  |    | .-. ||      \'-.  .-'|  .--'| .-. ||  |
+|  |`   |  ||  |' '-' '|  | |  |  |  |  '  '--'\' '-' '|  ||  |  |  |  |  |   ' '-' '|  |
+`--'    `--'`--'.`-  / `--' `--'  `--'   `-----' `---' `--''--'  `--'  `--'    `---' `--'
+                `---'
+@Author: Juan David Beltran Piza
+@University: Universidad ECCI
+@Subject: Pruebas de Software 4ANS
+@Year: 2024-1
+${application.title} ${application.version}
+Powered by Spring Boot ${spring-boot.version}

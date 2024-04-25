@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+@Author: Juan David Beltran Piza
+@University: Universidad ECCI
+@Subject: Pruebas de Software 4ANS
+@Year: 2024-1
+ -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vuelos Disponibles</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: #ced6e0;
+            color: darkgray;
+        }
+
+        .dark-modal .modal-content {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <style>
+        tr {
+            text-align: center;
+            color: #192949;
+
+        }
+
+        thead {
+            background: #a7c2d1;
+        }
+
+        h1 {
+            color: #0b2969;
+            font-weight: bold;
+        }
+
+        i {
+            color: #1a7eb8;
+        }
+
+        .dark-modal .modal-content {
+            background-color: #ced6e0;
+            color: #0b2969;
+        }
+
+        img {
+            padding-top: 30px;
+            padding-bottom: 0px;
+            margin-bottom: -30px;
+            width: 160px;
+        }
+    </style>
+
+
+
+    <div class="col-md-auto">
+        <img src="/lib/images/logo.png" class="img-fluid mx-auto d-block" alt="Imagen">
+    </div>
+
+
+
+
+    <div class="container">
+        <h1 class="mt-5 text-center">Lista de Vuelos Disponibles</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <table class="table table-striped mt-4">
+                    <thead>
+                        <tr class="titulo">
+                            <th scope="col"><i class="fa-solid fa-globe"></i> Aerolinea</th>
+                            <th scope="col"><i class="fa-solid fa-plane-departure"></i> Origen</th>
+                            <th scope="col"><i class="fa-solid fa-plane-arrival"></i> Destino</th>
+                            <th scope="col"><i class="fa-solid fa-calendar-days"></i> Fecha</th>
+                            <th scope="col"><i class="fa-solid fa-clock"></i> Hora de Salida</th>
+                            <th scope="col"><i class="fa-solid fa-hourglass-end"></i> Duración</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="flights-container">
+                        <!-- Aquí se añadirán dinámicamente los vuelos -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de notificación -->
+    <div class="modal fade dark-modal" id="notificacionModal" tabindex="-1" role="dialog"
+        aria-labelledby="notificacionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered dark-modal" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <div class="spinner-border text-primary mb-3" role="status" id="consultaLoadingModal">
+                        <span class="sr-only">Cargando...</span>
+                    </div>
+                    <h4 class="mb-3" id="consultaMessageModal">Cargando informacion del vuelo...</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-NzDDv6+Rov9mjIdi47pGuZRvBv5uV8VfcltDYFHgkTCiVMviGr0LhqWjTDciQkjp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-zLHfR/SoiPGBQO0bc8YvCBj4yxrq0Cqd6sOeuLlzLp6VwlgBHj4rXwpBz/47YfXN"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1241bd020d.js" crossorigin="anonymous"></script>
+
+    <script src="/lib/js/vuelos.js"></script>
+
+</body>
+
+</html>
