@@ -9,12 +9,13 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.app</groupId>
-	<artifactId>FlightControl</artifactId>
+	<artifactId>FlightControlApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>FlightControl</name>
 	<description>Flight Control APP for Pruebas de Software 4ANS - UECCI</description>
 	<properties>
 		<java.version>17</java.version>
+		<start-class>com.app.rest.FlightControlApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -33,8 +34,8 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -63,6 +64,10 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+
+
+					<mainClass>com.app.rest.FlightControlApplication</mainClass>
+					<layout>JAR</layout>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -70,8 +75,17 @@
 						</exclude>
 					</excludes>
 				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
+
+
 
 </project>
